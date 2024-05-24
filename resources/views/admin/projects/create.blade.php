@@ -11,12 +11,30 @@
 
         </div>
         <div class="mb-3">
+        <label for="title" class="form-label">Technologia</label>
+        <select name="technology_id" class="form-select" aria-label="Default select example">
+            <option >seleziona un'opzione</option>
+            @foreach ($technologies as $technology )
+
+
+            <option  value="{{$technology->id}}">{{$technology->name}}</option>
+           @endforeach
+          </select>
+        </div>
+        <div class="mb-3">
         <label for="languages" class="form-label">Linguaggio</label>
         <input name="languages" value="{{old('languages',) }}" type="text" class="form-control" >
         </div>
         <div class="mb-3">
-        <label  for="status"class="form-label">Stato </label>
-        <input name="status" value="{{old('status',) }}" type="text" class="form-control" >
+         <label  for="status"class="form-label">Stato </label>
+            <select  name="status" class="form-select" aria-label="Default select example">
+                <option selected>scegli un'opzione</option>
+                <option value="0">privato</option>
+                <option value="1">pubblico</option>
+
+              </select>
+
+
         </div>
         <div class="mb-3">
         <label  for="commits" class="form-label">Numero di commits </label>

@@ -12,5 +12,5 @@ class Project extends Model
     public function technology(){
         return $this->belongsTo(Technology::class);
     }
-    protected $fillable=['title','slug','languages','status','commits','description'];
+    protected $fillable=['title','technology_id','slug','languages','status','commits','description'];
 }
