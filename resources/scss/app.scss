@@ -1,0 +1,42 @@
+@import '~bootstrap/scss/bootstrap';
+
+
+.navbar-sc{
+    height: 75px;
+}
+
+aside{
+    height: calc(100vh - 75px);
+    background-color: rgb(1, 5, 15);
+    ul{
+        padding: 15px;
+        li{
+            list-style: none;
+            padding: 10px;
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}
+td{
+a{
+    text-decoration: none;
+    color: white;
+
+}
+
+}
+.modifica{
+    text-decoration: none;
+    color: black;
+}
+
+table{
+    input{
+border: none;
+outline: none;
+}
+}
+
