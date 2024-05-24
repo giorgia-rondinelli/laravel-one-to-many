@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-    public function category(){
+    public function technology(){
         return $this->belongsTo(Technology::class);
     }
     protected $fillable=['title','slug','languages','status','commits','description'];
