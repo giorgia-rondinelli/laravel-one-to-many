@@ -11,6 +11,17 @@
 
         </div>
         <div class="mb-3">
+            <label for="title" class="form-label">Technologia</label>
+            <select name="technology_id" class="form-select" aria-label="Default select example">
+                <option >seleziona un'opzione</option>
+                @foreach ($technologies as $technology )
+
+
+                <option @if (old('technology_id',$project->technology?->id)== $technology->id) selected @endif value="{{$technology->id}}">{{$technology->name}}</option>
+               @endforeach
+              </select>
+            </div>
+        <div class="mb-3">
         <label class="form-label">Linguaggio</label>
         <input value="{{old('languages', $project->languages) }}" type="text" class="form-control" >
         </div>

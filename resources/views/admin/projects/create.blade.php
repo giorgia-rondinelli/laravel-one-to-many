@@ -17,7 +17,7 @@
             @foreach ($technologies as $technology )
 
 
-            <option  value="{{$technology->id}}">{{$technology->name}}</option>
+            <option @if (old('technology_id')== $technology->id) selected @endif value="{{$technology->id}}">{{$technology->name}}</option>
            @endforeach
           </select>
         </div>
