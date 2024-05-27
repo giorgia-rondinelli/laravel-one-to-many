@@ -1,13 +1,38 @@
 @extends('admin.home')
 @section('content')
 <div class="container">
+
+    @if ($errors->any())
+<div role="alert" class="alert ">
+    <div class="alert alert-danger" role="alert">
+        <ul>
+        @foreach ($errors->all() as $mess )
+        <li>{{$mess}}</li>
+
+        @endforeach
+
+        </ul>
+    </div>
+
+
+</div>
+
+@endif
     <h2>Crea Nuovo Progetto</h2>
-    <form action="{{route('admin.projects.store',)}}" method="POST">
+    <form action="{{route('admin.projects.store',)}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
         <label for="title" class="form-label">Titolo</label>
         <input name="title" value="{{old('title') }}" type="text" class="form-control"  >
+
+        </div>
+
+
+        <div class="mb-3">
+        <label for="image" class="form-label">Immagine</label>
+        <input name="image" onchange="showimage(event)" value="{{old('image') }}" type="file" class="form-control"  >
+        <img  class='w-25  mt-3' src="" id="thumb" alt="">
 
         </div>
         <div class="mb-3">
@@ -27,8 +52,8 @@
         </div>
         <div class="mb-3">
          <label  for="status"class="form-label">Stato </label>
-            <select  name="status" class="form-select" aria-label="Default select example">
-                <option selected>scegli un'opzione</option>
+            <select  name="status" class="form-select" >
+                <option selected >scegli un'opzione</option>
                 <option value="0">privato</option>
                 <option value="1">pubblico</option>
 
@@ -48,6 +73,15 @@
         <button type="submit" class="btn btn-primary">Aggiungi </button>
     </form>
 </div>
+
+<script>
+    function showimage(event){
+        const thumb=document.getElementById('thumb');
+        console.log(thumb);
+        thumb.src= URL.createObjectURL(event.target.files[0])
+
+    }
+</script>
 @endsection
 
 {{-- funzione per creare preview --}}

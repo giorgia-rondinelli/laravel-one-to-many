@@ -8,6 +8,7 @@
 aside{
     height: calc(100vh - 75px);
     background-color: rgb(1, 5, 15);
+    flex-shrink: 0;
     ul{
         padding: 15px;
         li{

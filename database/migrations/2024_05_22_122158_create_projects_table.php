@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('status');
             $table->tinyInteger('commits')->nullable();
             $table->text('description')->nullable();
+            $table->text('image')->nullable();
 
 
 

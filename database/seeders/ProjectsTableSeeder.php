@@ -26,6 +26,7 @@ class ProjectsTableSeeder extends Seeder
             $new_project->status=$faker->boolean();
             $new_project->commits=$faker->numberBetween(1,50);
             $new_project->description=$faker->text(60);
+
             $new_project->save();
         }
 

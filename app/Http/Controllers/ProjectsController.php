@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Functions\Helper;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Technology;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectsController extends Controller
 {
@@ -36,9 +38,15 @@ class ProjectsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
         $form_data=$request->all();
+
+        if(array_key_exists('image',$form_data)){
+            $img_path=Storage::put('uploads',$form_data['image']);
+            $form_data['image']= $img_path;
+
+        }
 
         $new_project= new Project();
         $form_data['slug']=helper::generateSlug($form_data['title'],new Project);
@@ -78,6 +86,11 @@ class ProjectsController extends Controller
     public function update(Request $request, Project $project)
     {
         $form_data=$request->all();
+        if(isset($form_data['image'])){
+            $img_path=Storage::put('uploads',$form_data['image']);
+            $form_data['image']= $img_path;
+
+        }
 
 
         $form_data['slug']=helper::generateSlug($form_data['title'],new Project);
@@ -91,6 +104,8 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
+
+
         $project->delete();
         return redirect()->route('admin.projects.index');
     }

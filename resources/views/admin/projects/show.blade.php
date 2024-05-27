@@ -17,14 +17,20 @@
     <div class="mb-4">{{$project->description}}</div>
     <h4>Linguaggio</h4>
     <div>{{$project->languages}}</div>
+    <h4>Immagine</h4>
+    <div><img src="{{asset('storage/'.$project->image)}}" alt=""></div>
 
-    <button class="btn btn-warning mt-5"><a class="modifica" href="{{route('admin.projects.edit', $project)}}">Modifica</a> </button>
-    <form action="{{route('admin.projects.destroy' ,$project)}}" method="POST">
+    <div class="d-flex">
+        <button class="btn btn-warning mt-5 me-3 "><a class="modifica" href="{{route('admin.projects.edit', $project)}}">Modifica</a> </button>
+         <form action="{{route('admin.projects.destroy' ,$project)}}" method="POST">
         @csrf
         @method('delete')
 
         <button type="submit" class="btn btn-danger mt-5">Elimina </button>
-    </form>
+        </form
+    </div>
+
+
 
 
 
